@@ -29,7 +29,8 @@ def download():
     """Downloads the test dataset to DATA_CACHE_DIR"""
     os.makedirs(DATA_CACHE_DIR, exist_ok=True)
     # download the test dataset, unless it's already downloaded
-    data_url = "https://github.com/aaronjerez1/LLMNF/blob/main/input.txt"
+    #data_url = "https://raw.githubusercontent.com/aaronjerez1/LLMNF/main/input.txt"
+    data_url = "https://raw.githubusercontent.com/RyanMarcus/EdgarAllanPoetry/master/corpus/PabloNeruda.txt"
     data_filename = os.path.join(DATA_CACHE_DIR, "test.txt")
     if not os.path.exists(data_filename):
         print(f"Downloading {data_url} to {data_filename}...")
@@ -46,8 +47,8 @@ def tokenize():
     # encode the text
     tokens = encode(text)
     # let's take the first 32,768 tokens as the validation split (~10%)
-    val_tokens = tokens[:32768]
-    train_tokens = tokens[32768:]
+    val_tokens = tokens[:3276]
+    train_tokens = tokens[3276:]
     # save to file
     val_filename = os.path.join(DATA_CACHE_DIR, "test_val.bin")
     train_filename = os.path.join(DATA_CACHE_DIR, "test_train.bin")
